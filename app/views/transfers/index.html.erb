@@ -5,24 +5,29 @@
       <div class='col-md-12'>
         <h1>History</h1>
       </div>
-      <% @transfers.each do |transfer| %>
+      <% if @transfers.empty? %>
         <hr>
-        <div class='col-md-12'>
-          <h3>From</h3>
-          <p><%= transfer.outgoing_account.user.name %></p>
-        </div>
-        <div class='col-md-12'>
-          <h3>To</h3>
-          <p><%= transfer.incoming_account.user.name %></p>
-        </div>
-        <div class='col-md-4'>
-          <h3>Amount</h3>
-          <p><%= transfer.amount %></p>
-        </div>
-        <div class='col-md-8'>
-          <h3>Created On</h3>
-          <p><%= transfer.created_at %></p>
-        </div>
+        <h3>There are no transfers yet. To transfer funds, click <%= link_to 'here', new_transfer_path %>.</h3>
+      <% else %>
+        <% @transfers.each do |transfer| %>
+          <hr>
+          <div class='col-md-12'>
+            <h3>From</h3>
+            <p><%= transfer.outgoing_account.user.name %></p>
+          </div>
+          <div class='col-md-12'>
+            <h3>To</h3>
+            <p><%= transfer.incoming_account.user.name %></p>
+          </div>
+          <div class='col-md-4'>
+            <h3>Amount</h3>
+            <p><%= transfer.amount %></p>
+          </div>
+          <div class='col-md-8'>
+            <h3>Created On</h3>
+            <p><%= transfer.created_at %></p>
+          </div>
+        <% end %>
       <% end %>
       <hr>
       <div class='col-md-12'>
