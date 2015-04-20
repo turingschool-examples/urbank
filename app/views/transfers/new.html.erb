@@ -1,0 +1,29 @@
+<div class='container-fluid transfer'>
+  <div class='col-md-2'></div>
+  <div class='col-md-8'>
+    <div class='info'>
+      <div class='col-md-12'>
+        <h1>Transfer</h1>
+      </div>
+      <div class='col-md-8'>
+        <%= form_for(@transfer) do |f| %>
+          <div class='form-group'>
+            <%= f.label :amount %>
+            <%= f.number_field :amount, placeholder: 'Enter an Amount', class: 'form-control' %>
+          </div>
+          <div class='form-group'>
+            <%= f.label  :outgoing_id, 'From' %>
+            <%= f.select :outgoing_id, current_user.accounts.pluck(:id).insert(0, 'Click Here to Select an Account'), {}, { class: 'form-control' }%>
+          </div>
+          <div class='form-group'>
+            <%= f.label :incoming_id, 'To' %>
+            <%= f.select :incoming_id, Account.where.not(user_id: current_user.id).pluck(:id).insert(0, 'Click Here to Select an Account'), {}, { class: 'form-control' }%>
+          </div>
+          <%= f.submit 'Transfer Funds', class: 'btn btn-default'%>
+        <% end %>
+      </div>
+      <div class='col-md-4'></div>
+    </div>
+  </div>
+  <div class='col-md-2'></div>
+</div>

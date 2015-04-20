@@ -1,0 +1,31 @@
+<div class='container-fluid transfer'>
+  <div class='col-md-2'></div>
+  <div class='col-md-8'>
+    <div class='info'>
+      <div class='col-md-12'>
+        <h1>Your Transaction</h1>
+      </div>
+      <div class='col-md-12'>
+        <h5>From</h5>
+        <p><%= @transfer.outgoing_account.user.name %></p>
+      </div>
+      <div class='col-md-12'>
+        <h5>To</h5>
+        <p><%= @transfer.incoming_account.user.name %></p>
+      </div>
+      <div class='col-md-4'>
+        <h5>Amount</h5>
+        <p><%= @transfer.amount %></p>
+      </div>
+      <div class='col-md-8'>
+        <h5>Created On</h5>
+        <p><%= @transfer.created_at %></p>
+      </div>
+      <div class='col-md-12'>
+        <p> <%= link_to 'Go Back to Your Account', account_path(current_user.account), class: 'btn btn-default' %> </p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class='col-md-2'></div>
+</div>
