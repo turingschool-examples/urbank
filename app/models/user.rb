@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
   has_many :accounts
-
-  def account
-    accounts.first
-  end
+  has_one  :account
 
   def transfers
     account.incoming_transfers + account.outgoing_transfers
