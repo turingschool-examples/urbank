@@ -2,10 +2,10 @@
 
 one:
   amount: 1
-  sending_id: 1
-  receiving_id: 1
+  outgoing_id: 1
+  incoming_id: 1
 
 two:
   amount: 1
-  sending_id: 1
-  receiving_id: 1
+  outgoing_id: 1
+  incoming_id: 1
