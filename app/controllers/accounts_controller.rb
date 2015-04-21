@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
   def show
-    @account = current_user.account
+    @account = AccountPresenter.new(current_user.account)
   end
 end

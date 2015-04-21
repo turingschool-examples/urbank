@@ -12,13 +12,10 @@ class TransfersController < ApplicationController
   end
 
   def create
-    @transfer = Transfer.create(transfer_params)
-    account   = current_user.account
+    @transfer = TransferFunds.create(transfer_params, current_user)
 
-    if @transfer.save && account.amount >= @transfer.amount
-      account.amount = (account.amount - @transfer.amount)
-      account.save
-      redirect_to transfer_path(@transfer), success: "Your transfer of #{@transfer.amount} dollars was successful."
+    if @transfer.save
+      redirect_to transfer_path(id: @transfer.id), success: "Your transfer of #{@transfer.amount} dollars was successful."
     else
       flash.now[:warning] = 'Your transfer could not be completed. Please, try again.'
       render :new
